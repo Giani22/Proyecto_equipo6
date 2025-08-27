@@ -148,7 +148,7 @@ public class Ventana3 extends JFrame{
 		 	       
 		 	   // ------------------------------------------------------------------------------------------------------------
 		 	        // Accion del boton "+"
-		 	        btnAgregar.addActionListener(new ActionListener() {
+		 	   /*     btnAgregar.addActionListener(new ActionListener() {
 		 	            @Override
 		 	            public void actionPerformed(ActionEvent e) {
 
@@ -207,7 +207,7 @@ public class Ventana3 extends JFrame{
 		 	            }
 		 	        });
 
-		 	       
+		 	   */    
 		 	       
 		 	//---------------------------------------------------------------------------------------------------------     	
 		 	      
@@ -235,3 +235,4 @@ public class Ventana3 extends JFrame{
    
 		 	        
 		 	 }
+
