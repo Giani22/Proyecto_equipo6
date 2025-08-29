@@ -115,7 +115,7 @@ public class MenuLibro extends JFrame{
 
 		 	      	
 		 	      	//-------- Boton tacho-------
-		 	      	JButton btnEliminar = new JButton(":)"); // icono de tacho (no esta funcionando)
+		 	      	JButton btnEliminar = new JButton("Eliminar"); // icono de tacho (no esta funcionando)
 		 	      	
 		 	      	btnEliminar.setFont(new Font("Arial", Font.BOLD, 16));
 		 	      	btnEliminar.setBackground(new Color(95,152,129));
@@ -343,4 +343,5 @@ public class MenuLibro extends JFrame{
 		 	    }
    
 		 	        
+
 		 	 }
