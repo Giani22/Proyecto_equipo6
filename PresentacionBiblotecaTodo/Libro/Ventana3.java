@@ -18,7 +18,7 @@ public class Ventana3 extends JFrame{
 			 	        setLocationRelativeTo(null);
 			 	        setLayout(new BorderLayout());
 			 	        
-			 	        Main2 gestor = new Main2();
+			 	      
 			 	        
 			 //-------------------------------------------------------------------------------------------------------------	        
 			 	        
@@ -40,7 +40,7 @@ public class Ventana3 extends JFrame{
 
 			 	       panelIzquierdo.add(Box.createRigidArea(new Dimension(0, 200))); // espacio arriba
 			 	       panelIzquierdo.add(btnLibro);
-			 	       panelIzquierdo.add(Box.createVerticalGlue()); // empuja los demás hacia abajo
+			 	       panelIzquierdo.add(Box.createVerticalGlue()); // empuja los demas hacia abajo
 
 			 	       //------Boton Salir--------
 			 	       JButton Salir = new JButton("SALIR");
@@ -129,7 +129,7 @@ public class Ventana3 extends JFrame{
 			 	        
 			 	        
 			 	        // Panel central 
-			 	        String[] columnas = {"ISBN", "Titulo", "Autor", "País", "Materia", "Copias", "Prestado"};
+			 	        String[] columnas = {"ISBN", "Titulo", "Autor", "Materia", "Copias", "Prestado"};
 			 	        
 			 	    // Columnas definidas
 			 	       DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
@@ -159,169 +159,43 @@ public class Ventana3 extends JFrame{
 			 	       
 			 	   // ------------------------------------------------------------------------------------------------------------
 			 	        // Accion del boton "+"
-			 	        btnAgregar.addActionListener(new ActionListener() {
-			 	            @Override
-			 	            public void actionPerformed(ActionEvent e) {
-
-			 	                JTextField isbnField = new JTextField();
-			 	                JTextField tituloField = new JTextField();
-			 	                JTextField autorField = new JTextField();
-			 	                JTextField paisField = new JTextField();
-			 	                JTextField materiaField = new JTextField();
-			 	                JTextField copiasField = new JTextField();
-			 	               // JCheckBox prestadoCheck = new JCheckBox("Prestado");
-
-			 	                JPanel panel = new JPanel(new GridLayout(0, 1));
-			 	                panel.add(new JLabel("ISBN:"));
-			 	                panel.add(isbnField);
-			 	                panel.add(new JLabel("Titulo:"));
-			 	                panel.add(tituloField);
-			 	                panel.add(new JLabel("Autor:"));
-			 	                panel.add(autorField);
-			 	                panel.add(new JLabel("País:"));
-			 	                panel.add(paisField);
-			 	                panel.add(new JLabel("Materia:"));
-			 	                panel.add(materiaField);
-			 	                panel.add(new JLabel("Copias:"));
-			 	                panel.add(copiasField);
-			 	              //  panel.add(prestadoCheck);
-
-			 	               Object[] options = {"Añadir"};
-			 	              int result = JOptionPane.showOptionDialog(null, panel, "Añadir Libro",
-			 	                      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-			 	                      null, options, options[0]);
-
-			 	              if (result == 0) { // El usuario presionó "Añadir"
-			 	                  try {
-			 	                      String isbn = isbnField.getText();
-			 	                      String titulo = tituloField.getText();
-			 	                      String autor = autorField.getText();
-			 	                      String pais = paisField.getText();
-			 	                      String materia = materiaField.getText();
-			 	                      int copias = Integer.parseInt(copiasField.getText());
-
-			 	                      Libro nuevo = new Libro(isbn, titulo, autor, pais, materia, copias);
-
-			 	                      modelo.addRow(new Object[]{
-			 	                              nuevo.getIsbn(),
-			 	                              nuevo.getTitulo(),
-			 	                              nuevo.getAutor(),
-			 	                              nuevo.getPais(),
-			 	                              nuevo.getMateria(),
-			 	                              nuevo.getCopias()
-			 	                      });
-
-			 	                  } catch (NumberFormatException ex) {
-			 	                      JOptionPane.showMessageDialog(null, "Vuelvelo a intentar :´] ");
-			 	                  }
-			 	              }
-
-			 	            }
-			 	        });
 			 	        
-		   //----------------------------------------------------------------------------------------------------------------------
+			 	       btnAgregar.addActionListener(new ActionListener() {
+			 	    	    @Override
+			 	    	    public void actionPerformed(ActionEvent e) {
+			 	    	    
+			 	    	    	Gestor.ventana4();
+			 	    	  
+			 	    	    
+			 	    	    }
+			 	    	    });
 			 	 
-			 	  // ACCION BOTON PRESTAMO 
-			 	        btnPrestamo.addActionListener(new ActionListener() { 
-							@Override
-							public void actionPerformed(ActionEvent e) {
-							
-							
-							JPanel panelPrestamo = new JPanel(new GridLayout(0,1));
-							
-							JTextField txtNombre = new JTextField();
-			 	                JTextField txtApellido = new JTextField();
-			 	                JTextField txtCi = new JTextField();
-			 	                JTextField txtNroTel = new JTextField();
-			 	                JTextField txtMateria = new JTextField();
-			 	                JTextField txtGrupo = new JTextField();
-			 	                JTextField txtIsbn = new JTextField();
-			 	                
-			 	                panelPrestamo.add(new JLabel("Nombre:"));
-			 	                panelPrestamo.add(txtNombre);
-			 	                panelPrestamo.add(new JLabel("Apellido:"));
-			 	                panelPrestamo.add(txtApellido);
-			 	                panelPrestamo.add(new JLabel("CI:"));
-			 	                panelPrestamo.add(txtCi);
-			 	                panelPrestamo.add(new JLabel("Nro Telefono:"));
-			 	                panelPrestamo.add(txtNroTel);
-			 	                panelPrestamo.add(new JLabel("Materia:"));
-			 	                panelPrestamo.add(txtMateria);
-			 	                panelPrestamo.add(new JLabel("Grupo:"));
-			 	                panelPrestamo.add(txtGrupo);
-
-			 	               Object[] options = {"Hacer Préstamo"};
-			 	              int result = JOptionPane.showOptionDialog(null, panelPrestamo, "Hacer Préstamo",
-			 	                      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-			 	                      null, options, options[0]);
-
-			 	              if (result == 0) { // Presionó "Hacer Préstamo"
-			 	                  try {
-			 	                      String nombre = txtNombre.getText();
-			 	                      String apellido = txtApellido.getText();
-			 	                      int ci = Integer.parseInt(txtCi.getText());
-			 	                      int nroTel = Integer.parseInt(txtNroTel.getText());
-			 	                      String materia = txtMateria.getText();
-			 	                      String grupo = txtGrupo.getText();
-			 	                      int isbn = Integer.parseInt(txtIsbn.getText());
-
-			 	                      Solicitante nuevo = new Solicitante(nombre, apellido, ci, nroTel, materia, grupo, isbn);
-
-			 	                      modelo.addRow(new Object[]{
-			 	                              nuevo.getNombre(),
-			 	                              nuevo.getApellido(),
-			 	                              nuevo.getCi(),
-			 	                              nuevo.getNroTel(),
-			 	                              nuevo.getMateria(),
-			 	                              nuevo.getGrupo(),
-			 	                              nuevo.getIsbn()
-			 	                      });
-
-			 	                  } catch (NumberFormatException ex) {
-			 	                      JOptionPane.showMessageDialog(null, "Vuelvelo a intentar :´] ");
-			 	                  }
-			 	              }
-
-			 	                 
-			 	               					
-							}
-						});
-			 	      
-			 	   //ACCION BOTON DEVOLUCION
-			 	        btnDevolucion.addActionListener(new ActionListener() {
-							
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								JPanel panelDevolucion = new JPanel(new GridLayout(0,1));
-						 	     //  panelDevolucion.setBackground(new Color(186, 255, 255));
-								
-								
-								
-									JComboBox cmbCi = new JComboBox();
-									JComboBox cmbIsbn = new JComboBox();
-
-									
-				 	                panelDevolucion.add(new JLabel("CI:"));
-				 	                panelDevolucion.add(cmbCi);
-				 	                panelDevolucion.add(new JLabel("ISBN:"));
-				 	                panelDevolucion.add(cmbIsbn);
-				 	              
-				 	               Object[] options = {"Devolver"};
-				 	              int result = JOptionPane.showOptionDialog(null, panelDevolucion, "Hacer Devolución",
-				 	                      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-				 	                      null, options, options[0]);
-
-				 	              if (result == 0) { // Presionó "Devolver"
-				 	                  // Tu código de devolución
-				 	              }
-
-								}
-							
-						});
+			 	 // boton prestamo
 			 	       
+			 	      btnPrestamo.addActionListener(new ActionListener() {
+			 	    	    @Override
+			 	    	    public void actionPerformed(ActionEvent e) {
+			 	    	        Gestor.ventana5(); 
+			 	    	    }
+			 	    	});
+					
+			 	   // boton devolucion
+			 	       
+			 	     btnDevolucion.addActionListener(new ActionListener() {
+			 	        @Override
+			 	        public void actionPerformed(ActionEvent e) {
+			 	        
+			 	        	Gestor.ventana6();
+			 	        	
+			 	        } 
+			 	        });
+								
+								
+								
+							
 		//------------------------------------------------------------------------------------------------------------------
 			 	        
-			 	        //-----Acion del boton eliminar------
+			 	        //-----Accion del boton eliminar------
 			 	        
 			 	       btnEliminar.addActionListener(new ActionListener() {
 			 	    	    @Override
@@ -370,12 +244,12 @@ public class Ventana3 extends JFrame{
 			 	        logo.setBounds(0, 0, 150, 150);
 			 	        panelIzquierdo.add(logo);
 			 	        
-			 	        //Fin de la tabla 1
+			 	      
 			 	        
 			 	        
 			 	    }
 	   
 			 	        
-
+			 	        
 			 	 
 }
