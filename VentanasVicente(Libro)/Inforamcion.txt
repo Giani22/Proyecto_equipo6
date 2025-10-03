@@ -1,1 +1,0 @@
-En la ventana MenuLibro, contiene el Menu de Libro, las ventanas emergentes de Alta, Prestamo y Devolucion. A su vez, contiene Action Listeners en los botones, que despliguan dichas ventanas.
