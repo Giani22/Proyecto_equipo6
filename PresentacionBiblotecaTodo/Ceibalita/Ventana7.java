@@ -1,10 +1,14 @@
 package ventana2;
+
 import java.awt.*;
 	import java.awt.event.*;
 	import javax.swing.*;
+	
 import javax.swing.table.DefaultTableModel;
 public class Ventana7  extends JFrame{
+	
 	Main2 Gestor = new Main2();
+	
 		 public Ventana7() {
 		   			 			//Ventana
 			 			 	        setTitle("Biblioteca Liceo Prof. Álvaro Figueredo");
@@ -13,7 +17,7 @@ public class Ventana7  extends JFrame{
 			 			 	        setLocationRelativeTo(null);
 			 			 	        setLayout(new BorderLayout());
 			 			 	        
-			 			 	      Main2 Gestor = new Main2();
+			 			 	      
 			 			 	        
 			 			 //-------------------------------------------------------------------------------------------------------------	        
 			 			 	        
@@ -47,13 +51,8 @@ public class Ventana7  extends JFrame{
 			 			 	      btnSalir.setForeground(Color.BLACK);
 			 			 	      btnSalir.setBorder(new Borde(9));
 			 			 	      panelIzquierdo.add(btnSalir);
-			 			 	      btnSalir.addActionListener(new ActionListener() {
-			 			                @Override
-			 			                public void actionPerformed(ActionEvent e) {
-			 			                    dispose(); // cierra la ventana actual
-			 			                  //  Gestor.ventana(); // abre la otra ventana
-			 			                }
-			 			            });
+			 			 	      
+			 			 	     
 			 			 	      panelIzquierdo.add(Box.createRigidArea(new Dimension(0, 10))); // margen inferior
 			 			 	       
 			 			 	    
@@ -111,10 +110,20 @@ public class Ventana7  extends JFrame{
 			 			 	      	btnEliminar.setBorder(new Borde(9));
 			 			 	      	
 			 			 	        panelSuperior.add(btnEliminar);
-
+			 			 	   
 			 			 	        
-			 			 	       
-			 			 	    
+			 			 	        //-------Actualizar--------
+			 			 	        
+			 			 	      JButton btnActualizar = new JButton("Actializar");
+			 			 	      	
+			 			 	    btnActualizar.setFont(new Font("Arial", Font.BOLD, 18));
+			 			 	  btnActualizar.setBackground(new Color(95, 152, 129));     // mismo verde del borde
+			 			 	btnActualizar.setForeground(Color.BLACK);
+			 			 	btnActualizar.setBorder(new Borde(9));
+			 			 	      	
+			 			 	      	panelSuperior.add(btnActualizar);
+
+			 			 	      
 			 			 	        
 			 			 //------------------------------------------------------------------------------------------------------------
 			 			 	        
@@ -125,7 +134,16 @@ public class Ventana7  extends JFrame{
 			 			 	    // Columnas definidas
 			 			 	       DefaultTableModel modelo = new DefaultTableModel(columnas, 0);
 			 			 	        
-			 			 	        
+			 			 	       btnActualizar.addActionListener(new ActionListener() {
+										
+										@Override
+										public void actionPerformed(ActionEvent e) {
+											Gestor.listarLibro(modelo);
+											
+										}
+									}); 
+			 			 	       
+			 			 	       
 			 			 	       JTable tabla = new JTable(modelo);
 			 			 	       tabla.setGridColor(Color.BLACK);     // color de lineas
 			 			 	       tabla.setShowGrid(true);             // mostrar lineas
@@ -155,142 +173,32 @@ public class Ventana7  extends JFrame{
 			 			 	           @Override
 			 			 	            public void actionPerformed(ActionEvent e) {
 
-			 			 	                JTextField IDField = new JTextField();
+			 			 	                Gestor.ventana10();
 			 			 	                
-			 			 	                
-			 			 	               
-			 			 	              JPanel panel = new JPanel(new GridLayout(0, 1));
-			 			 	            panel.add(new JLabel("ID:"));
-			 			 	            panel.add(IDField);
-			 			 	            
-
-			 			 	            Object[] options = {"Añadir"};
-			 			 	            int result = JOptionPane.showOptionDialog(null, panel, "Añadir Computadora",
-			 			 	                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-			 			 	                    null, options, options[0]);
-
-			 			 	            if (result == 0) { // El usuario presionó "Añadir"
-			 			 	                try {
-			 			 	                    int id = Integer.parseInt(IDField.getText());
-			 			 	                    
-			 			 	                    Datos_Laptops nuevo = new Datos_Laptops(id);
-
-			 			 	                    modelo.addRow(new Object[]{
-			 			 	                            nuevo.getId(),
-			 			 	                           
-			 			 	                    });
-
-			 			 	                  } catch (NumberFormatException ex) {
-			 			 	                      JOptionPane.showMessageDialog(null, "Vuelvelo a intentar :´] ");
-			 			 	                  }
-			 			 	              }
-
-			 			 	            }
-			 			 	      });
-			 			 	 
-			 			 	        //-------------------------------------------------------------------------------------------------------------------------
+			 			 	         } 
+						 	        });
 			 			 	        
 			 			 	     // ACCION BOTON PRESTAMO 
 						 	        btnPrestamo.addActionListener(new ActionListener() { 
 										@Override
 										public void actionPerformed(ActionEvent e) {
 										
-										
-										JPanel panelPrestamo = new JPanel(new GridLayout(0,1));
-										
-										JTextField txtNombre = new JTextField();
-						 	                JTextField txtApellido = new JTextField();
-						 	                JTextField txtCi = new JTextField();
-						 	                JTextField txtNroTel = new JTextField();
-						 	                JTextField txtMateria = new JTextField();
-						 	                JTextField txtGrupo = new JTextField();
-						 	                JTextField txtIsbn = new JTextField();
-						 	                
-						 	                panelPrestamo.add(new JLabel("Nombre:"));
-						 	                panelPrestamo.add(txtNombre);
-						 	                panelPrestamo.add(new JLabel("Apellido:"));
-						 	                panelPrestamo.add(txtApellido);
-						 	                panelPrestamo.add(new JLabel("CI:"));
-						 	                panelPrestamo.add(txtCi);
-						 	                panelPrestamo.add(new JLabel("Nro Telefono:"));
-						 	                panelPrestamo.add(txtNroTel);
-						 	                panelPrestamo.add(new JLabel("Materia:"));
-						 	                panelPrestamo.add(txtMateria);
-						 	                panelPrestamo.add(new JLabel("Grupo:"));
-						 	                panelPrestamo.add(txtGrupo);
+										    Gestor.ventana8();
+										} 
+						 	        }); 
 
-						 	               Object[] options = {"Hacer Préstamo"};
-						 	              int result = JOptionPane.showOptionDialog(null, panelPrestamo, "Hacer Préstamo",
-						 	                      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-						 	                      null, options, options[0]);
-
-						 	              if (result == 0) { // Presionó "Hacer Préstamo"
-						 	                  try {
-						 	                      String nombre = txtNombre.getText();
-						 	                      String apellido = txtApellido.getText();
-						 	                      int ci = Integer.parseInt(txtCi.getText());
-						 	                      int nroTel = Integer.parseInt(txtNroTel.getText());
-						 	                      String materia = txtMateria.getText();
-						 	                      String grupo = txtGrupo.getText();
-						 	                      int isbn = Integer.parseInt(txtIsbn.getText());
-
-						 	                      Solicitante nuevo = new Solicitante(nombre, apellido, ci, nroTel, materia, grupo, isbn);
-
-						 	                      modelo.addRow(new Object[]{
-						 	                              nuevo.getNombre(),
-						 	                              nuevo.getApellido(),
-						 	                              nuevo.getCi(),
-						 	                              nuevo.getNroTel(),
-						 	                              nuevo.getMateria(),
-						 	                              nuevo.getGrupo(),
-						 	                              nuevo.getIsbn()
-						 	                      });
-
-						 	                  } catch (NumberFormatException ex) {
-						 	                      JOptionPane.showMessageDialog(null, "Vuelvelo a intentar :´] ");
-						 	                  }
-						 	              }
-
-						 	                 
-						 	               					
-										}
-									});
-						 	      
-			 			 	        
-			 			 	        //---------------------------------------------------------------------------------------------------
 			 			 	      
 						 	       //ACCION BOTON DEVOLUCION
 						 	        btnDevolucion.addActionListener(new ActionListener() {
 										
 										@Override
 										public void actionPerformed(ActionEvent e) {
-											JPanel panelDevolucion = new JPanel(new GridLayout(0,1));
-									 	     //  panelDevolucion.setBackground(new Color(186, 255, 255));
 											
-											
-											
-												JComboBox cmbCi = new JComboBox();
-												JComboBox cmbIsbn = new JComboBox();
-
-												
-							 	                panelDevolucion.add(new JLabel("CI:"));
-							 	                panelDevolucion.add(cmbCi);
-							 	                panelDevolucion.add(new JLabel("ID:"));
-							 	                panelDevolucion.add(cmbIsbn);
-							 	              
-							 	               Object[] options = {"Devolver"};
-							 	              int result = JOptionPane.showOptionDialog(null, panelDevolucion, "Hacer Devolución",
-							 	                      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-							 	                      null, options, options[0]);
-
-							 	              if (result == 0) { // Presionó "Devolver"
-							 	                  // Tu código de devolución
-							 	              }
-
-											}
-										
-									});
-			 			 	       
+										    Gestor.ventana9();
+										    
+										} 
+						 	        });
+									
 			 			 	//---------------------------------------------------------------------------------------------------------     	
 			 			 	       
 			 				 	       btnEliminar.addActionListener(new ActionListener() {
@@ -335,7 +243,7 @@ public class Ventana7  extends JFrame{
 			 			 	       add(panelIzquierdo, BorderLayout.WEST);   // cubre toda la altura
 			 			 	       add(panelCentroCompleto, BorderLayout.CENTER); // superior + tabla
 			 			 	       
-			 			 	   // Panel Izquierdo
+			 			 	  
 
 			 			 	      // ------ Logo arriba ------
 			 			 	      JLabel logo = new JLabel(new ImageIcon("logo2.png"));
@@ -347,6 +255,6 @@ public class Ventana7  extends JFrame{
 			 			 	        
 			 			 	        
 			 			 	    }
-			 	   
+						 	        
 			 			 	        
-			 			 	 }
+						 	        }
