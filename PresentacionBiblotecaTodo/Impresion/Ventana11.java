@@ -1,16 +1,16 @@
-  package ventana2;
+ package ventana2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ventana10 extends JFrame {
+public class Ventana11 extends JFrame {
 
     Main2 Gestor = new Main2();
-    private int plataImpresion = 0;
+  
 
-    public Ventana10() {
+    public Ventana11() {
 
         // Ventana
         this.setTitle("Biblioteca Liceo Prof. Álvaro Figueredo");
@@ -50,30 +50,30 @@ public class Ventana10 extends JFrame {
 	       panelIzquierdo.add(btnImpresion);
 	       panelIzquierdo.add(Box.createVerticalGlue()); // empuja los demás hacia abajo
         
-        btnImpresion.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Acción futura
-            }
-        });
+    
         panelIzquierdo.add(btnImpresion);
         panelIzquierdo.add(Box.createVerticalGlue());
         
-        
+   //----------------------------------------------------------------     
 
         // ----Botón Salir-----
         JButton btnSalir = crearBoton("Salir");
-        btnSalir.addActionListener(new ActionListener() {
+      /*  btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
         });
+        
+        */
+        
         panelIzquierdo.add(btnSalir);
         panelIzquierdo.add(Box.createRigidArea(new Dimension(0, 20)));
 
         panelPrincipal.add(panelIzquierdo, BorderLayout.WEST);
 
+        //-------------------------------------------------------------------------------------------
+        
         // ----Panel derecho-----
         JPanel panelDerecho = new JPanel();
         panelDerecho.setPreferredSize(new Dimension(300, 200));
@@ -103,6 +103,7 @@ public class Ventana10 extends JFrame {
         // ------ Botón aceptar --------
         JButton btnAceptar = crearBoton("Aceptar");
         btnAceptar.setBackground(new Color(32, 183, 188));
+       
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,3 +132,4 @@ public class Ventana10 extends JFrame {
         return boton;
     }
 }
+
